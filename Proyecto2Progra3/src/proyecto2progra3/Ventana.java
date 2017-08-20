@@ -16,6 +16,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import ui.AnimVentana;
 
 /**
  *
@@ -81,14 +82,17 @@ public class Ventana extends javax.swing.JFrame {
         BrickSortBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        SalirBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        HeapSortBtn = new javax.swing.JButton();
+        AnimacionesBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        MergeSortBtn.setText("MergeSort");
+        MergeSortBtn.setText("MergeSort Simple");
         MergeSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MergeSortBtnActionPerformed(evt);
@@ -127,10 +131,10 @@ public class Ventana extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SalirBtn.setText("Salir");
+        SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SalirBtnActionPerformed(evt);
             }
         });
 
@@ -147,35 +151,59 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Algoritmo mas eficiente:");
+        jLabel1.setText("Algoritmo mas rapido:");
+
+        HeapSortBtn.setText("HeapSort");
+        HeapSortBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HeapSortBtnActionPerformed(evt);
+            }
+        });
+
+        AnimacionesBtn.setText("Animaciones");
+        AnimacionesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnimacionesBtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("MergeSort Cicular");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addComponent(MergeSortBtn)
-                .addGap(79, 79, 79)
-                .addComponent(InsertionSortBtn)
-                .addGap(84, 84, 84)
-                .addComponent(BrickSortBtn)
-                .addGap(172, 172, 172))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jButton2)
+                        .addComponent(MergeSortBtn)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(HeapSortBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(InsertionSortBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(BrickSortBtn)
+                        .addGap(11, 11, 11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(242, 242, 242)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(AnimacionesBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SalirBtn)))
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,16 +212,21 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MergeSortBtn)
                     .addComponent(InsertionSortBtn)
-                    .addComponent(BrickSortBtn))
+                    .addComponent(BrickSortBtn)
+                    .addComponent(HeapSortBtn)
+                    .addComponent(jButton1))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SalirBtn)
+                    .addComponent(AnimacionesBtn))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -217,7 +250,7 @@ public class Ventana extends javax.swing.JFrame {
         personas.MergeSort();
         long estimatedTime = System.nanoTime() - startTime;
         JOptionPane.showMessageDialog(null,"Lista ordenada por MergeSort:\n"+personas.getString());
-        Object[] TempRow= { counter, "MergeSort", "Lista Simple", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
+        Object[] TempRow= { counter, "MergeSort Simple", "Lista Simple", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
         fl.AgregarAHistorial(Arrays.toString(TempRow));
@@ -274,9 +307,9 @@ public class Ventana extends javax.swing.JFrame {
         MejorAlgoritmo();
     }//GEN-LAST:event_InsertionSortBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SalirBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         while(((DefaultTableModel)jTable1.getModel()).getRowCount()>0){
@@ -288,8 +321,63 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void HeapSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeapSortBtnActionPerformed
+        Pila pila = new Pila();
+        pila.Push(new Persona("3-1437-0004", 20, "a", "b", "c"));
+        pila.Push(new Persona("E52461", 20, "a", "b", "c"));
+        pila.Push(new Persona("3-1427-0004", 20, "a", "b", "c"));
+        pila.Push(new Persona("E52261", 20, "a", "b", "c"));
+        pila.Push(new Persona("2-1437-0004", 20, "a", "b", "c"));
+        pila.Push(new Persona("1-1432-0004", 20, "a", "b", "c"));
+        pila.Push(new Persona("1-1417-0004", 20, "a", "b", "c"));
+        pila.Push(new Persona("2-1437-1004", 20, "a", "b", "c"));
+        pila.Push(new Persona("1-1437-0224", 20, "a", "b", "c"));
+        pila.Push(new Persona("E12461", 20, "a", "b", "c"));
+        pila.Push(new Persona("E51461", 20, "a", "b", "c"));
+        JOptionPane.showMessageDialog(null,"Pila desordenada:\n"+pila.getString());
+        long startTime = System.nanoTime();    
+        pila.HeapSortAlgorithm();
+        long estimatedTime = System.nanoTime() - startTime;
+        JOptionPane.showMessageDialog(null,"Pila ordenada por HeapSort:\n"+pila.getString());   
+        Object[] TempRow= { counter, "HeapSort", "Pila", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
+        ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
+        counter++;
+        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        MejorAlgoritmo();
+    }//GEN-LAST:event_HeapSortBtnActionPerformed
+
+    private void AnimacionesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnimacionesBtnActionPerformed
+        AnimVentana AVentana = new AnimVentana();
+        AVentana.setVisible(true);
+    }//GEN-LAST:event_AnimacionesBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ListaCircular<Persona> personas = new ListaCircular<Persona>(); 
+        personas.InsertarFinal(new Persona("3-1437-0004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("E52461", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("3-1427-0004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("E52261", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("2-1487-0004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("1-1432-0004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("1-1417-0004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("2-1437-1004", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("1-1437-0224", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("E12461", 20, "a", "b", "c"));
+        personas.InsertarFinal(new Persona("E51461", 20, "a", "b", "c"));
+        JOptionPane.showMessageDialog(null,"Lista circular desordenada:\n"+personas.getString());
+        long startTime = System.nanoTime();    
+        personas.MergeSort();
+        long estimatedTime = System.nanoTime() - startTime;
+        JOptionPane.showMessageDialog(null,"Lista circular ordenada por MergeSort:\n"+personas.getString());
+        Object[] TempRow= { counter, "MergeSort Circular", "Lista Circular", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
+        ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
+        counter++;
+        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        MejorAlgoritmo();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,9 +487,12 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AnimacionesBtn;
     private javax.swing.JButton BrickSortBtn;
+    private javax.swing.JButton HeapSortBtn;
     private javax.swing.JButton InsertionSortBtn;
     private javax.swing.JButton MergeSortBtn;
+    private javax.swing.JButton SalirBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

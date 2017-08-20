@@ -80,4 +80,120 @@ public class Pila<T>
         }
         return contador;
     }
+    
+        
+    public void HeapSortAlgorithm(){
+        Pila<Persona> _pila = (Pila<Persona>) this;
+        Cola<Persona> x = PilaConverter(this);
+        x = HeapSort(x);
+        _pila = ColaConverter(x);
+        x = PilaConverter(_pila);
+        while(!x.IsEmpty()){
+            this.Push((T) x.Dequeue());
+        }
+    }
+    
+    private Cola HeapSort(Cola Cola) {
+            Cola Izquierda = new Cola();
+            Cola Derecha = new Cola();
+            Persona raiz = (Persona)Cola.Dequeue();
+            int Count = Cola.Size();
+            for (int i = 0; i < Count; i++) {
+                if (CompararPersonas((Persona)Cola.Peek(),raiz))
+                {
+                    Izquierda.Enqueue(Cola.Dequeue());
+                }
+                else {
+                    Derecha.Enqueue(Cola.Dequeue());
+                }
+            }
+            if (Izquierda.Size() > 0) {
+                Cola x = HeapSort(Izquierda);
+                Count = x.Size();
+                for (int i = 0; i < Count; i++)
+                {
+                    Cola.Enqueue(x.Dequeue());
+                }
+            }
+            Cola.Enqueue(raiz);
+            if (Derecha.Size() > 0)
+            {
+                Cola x = HeapSort(Derecha);
+                Count = x.Size();
+                for (int i = 0; i < Count; i++)
+                {
+                    Cola.Enqueue(x.Dequeue());
+                }
+            }
+            return Cola;
+        }
+
+    private boolean CompararPersonas(Persona p1, Persona p2) {
+        if (p1.getCedula().charAt(0) == 'E' || p2.getCedula().charAt(0) == 'E')
+        {
+            if (p1.getCedula().charAt(0) == 'E' && p2.getCedula().charAt(0) == 'E')
+            {
+
+                if (Integer.parseInt(p1.getCedula().substring(1, p1.getCedula().length() - 1)) < Integer.parseInt(p2.getCedula().substring(1, p2.getCedula().length() - 1)))
+                {
+                    return true;
+                }
+            }
+            else if (p1.getCedula().charAt(0) == 'E')
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (Integer.parseInt(p1.getCedula().split("-")[0]) < Integer.parseInt(p2.getCedula().split("-")[0]))
+            {
+                return true;
+            }
+            else if (Integer.parseInt(p1.getCedula().split("-")[0]) == Integer.parseInt(p2.getCedula().split("-")[0]))
+            {
+                if (Integer.parseInt(p1.getCedula().split("-")[1]) < Integer.parseInt(p2.getCedula().split("-")[1]))
+                {
+                    return true;
+                }
+                else if (Integer.parseInt(p1.getCedula().split("-")[1]) == Integer.parseInt(p2.getCedula().split("-")[1]))
+                {
+                    if (Integer.parseInt(p1.getCedula().split("-")[2]) < Integer.parseInt(p2.getCedula().split("-")[2]))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+        }
+        return false;
+    }
+    
+    
+    public Cola PilaConverter(Pila pPila){
+        Cola x = new Cola();
+        while(!pPila.IsEmpty()){
+            x.Enqueue(pPila.Pop());
+        }
+        return x;
+    }
+    
+    public Pila ColaConverter(Cola pCola){
+        Pila x = new Pila();
+        while(!pCola.IsEmpty()){
+            x.Push(pCola.Dequeue());
+        }
+        return x;
+    }
+    
+     public String getString() { 
+        String mensaje="";
+        Nodo Aux = this.getCabeza();
+        while (Aux != null) { 
+            mensaje+=((Persona)Aux.getObjeto()).getCedula() + "  ";
+            Aux = Aux.getSiguiente();
+        } 
+        return mensaje;
+    }
+
 }

@@ -1,7 +1,0 @@
-[1, InsertionSort, Cola, 2017/08/18 19:29:24, 524934]
-[2, InsertionSort, Cola, 2017/08/18 23:30:25, 664393]
-[3, BrickSort, Lista Simple, 2017/08/18 23:30:31, 1185402]
-[4, BrickSort, Lista Simple, 2017/08/18 23:30:34, 784834]
-[5, BrickSort, Lista Simple, 2017/08/18 23:30:36, 485993]
-[6, BrickSort, Lista Simple, 2017/08/18 23:32:37, 1242150]
-[7, MergeSort, Lista Simple, 2017/08/18 23:32:40, 690654]
