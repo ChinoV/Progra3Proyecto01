@@ -81,7 +81,11 @@ public class Pila<T>
         return contador;
     }
     
-        
+    /**
+    * <h1>HeapSortAlgorithm</h1>
+    * <p>
+    * Ordena la pila con el algoritmo HeapSort</p>
+    */   
     public void HeapSortAlgorithm(){
         Pila<Persona> _pila = (Pila<Persona>) this;
         Cola<Persona> x = PilaConverter(this);
@@ -93,6 +97,11 @@ public class Pila<T>
         }
     }
     
+    /**
+    * <h1>HeapSort</h1>
+    * <p>
+    * Facilita el ordenamiento de la pila a traves del algoritmo HeapSort</p> 
+    */  
     private Cola HeapSort(Cola Cola) {
             Cola Izquierda = new Cola();
             Cola Derecha = new Cola();
@@ -128,6 +137,14 @@ public class Pila<T>
             return Cola;
         }
 
+    /**
+     * <h1>CompararPersonas</h1>
+     * <p> Prioritiza Personas segun su cedula
+     * </p>
+     *@param p1 primera persona a comparar
+     *@param p2 segunda persona a comparar
+     *@return boolean 
+     */
     private boolean CompararPersonas(Persona p1, Persona p2) {
         if (p1.getCedula().charAt(0) == 'E' || p2.getCedula().charAt(0) == 'E')
         {
@@ -169,7 +186,12 @@ public class Pila<T>
         return false;
     }
     
-    
+    /**
+     * <h1>PilaConverter</h1> 
+     * 
+     *@param Pila 
+     *@return Cola 
+     */
     public Cola PilaConverter(Pila pPila){
         Cola x = new Cola();
         while(!pPila.IsEmpty()){
@@ -177,7 +199,12 @@ public class Pila<T>
         }
         return x;
     }
-    
+    /**
+     * <h1>ColaConverter</h1>
+     *   
+     *@param Cola 
+     *@return Pila 
+     */
     public Pila ColaConverter(Cola pCola){
         Pila x = new Pila();
         while(!pCola.IsEmpty()){
@@ -185,7 +212,12 @@ public class Pila<T>
         }
         return x;
     }
-    
+    /**
+     * <h1>getString</h1>
+     * <p> Convierte a un string el contenido de la pila
+     * </p>
+     *@return String 
+     */
      public String getString() { 
         String mensaje="";
         Nodo Aux = this.getCabeza();

@@ -29,14 +29,20 @@ public class Panel extends JPanel{
     private BoxNumber[] bNumber;
 
     /**
- * Constructor de clase
- */
+    * Constructor de clase
+    */
     public Panel(){
         setSize(dimension);
         setVisible(true);                
     }
 
     @Override
+    /**
+     * <h1>paintComponent</h1>
+     * <p>
+     * Pinta numeros y casillas en el panel</p> 
+     * @param Graphics
+     */ 
     public void paintComponent(Graphics g){    
         Graphics2D g2 =(Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);    
@@ -51,9 +57,10 @@ public class Panel extends JPanel{
     }
 
     /**
- * Genera 5 numeros al azar y asigna a casillas
- * posicion las casillas en el panel
- */
+     * <h1>generar</h1>
+     * <p>
+     * Genera numeros al azar y los asigna a casillas en el panel</p> 
+     */ 
     public void generar(){       
         bNumber = new BoxNumber[NUM_BOX];
         Random rn = new Random();
@@ -64,28 +71,6 @@ public class Panel extends JPanel{
             int num = rn.nextInt(max - min + 1) + min;
             bNumber[i].setNumber(String.valueOf(num));
         }
-        repaint();
-    }
-
-    /**
-     * <h1>GenerarEspecificos</h1>
-     * <p>
-     * Genera numeros especificos y asigna la posicion.</p>
-     */
-    public void generarEspecificos() {
-        bNumber = new BoxNumber[NUM_BOX];
-        int num1=3,num2=5,num3=9,num4=4, num5=8,num6=7;
-        for (int i = 0; i < NUM_BOX; i++) {
-            bNumber[i] = new BoxNumber();
-            bNumber[i].x = 10 + bNumber[i].WIDTH * i;
-            bNumber[i].y = getHeight() / 2 - bNumber[i].HEIGHT / 2;
-        }
-        bNumber[0].setNumber(String.valueOf(num1));
-        bNumber[1].setNumber(String.valueOf(num2));
-        bNumber[2].setNumber(String.valueOf(num3));
-        bNumber[3].setNumber(String.valueOf(num4));
-        bNumber[4].setNumber(String.valueOf(num5));
-        bNumber[5].setNumber(String.valueOf(num6));
         repaint();
     }
  
@@ -103,8 +88,13 @@ public class Panel extends JPanel{
 
     public class BrickWorker extends SwingWorker<Void, Void> {
 
-        private final int velocidad = 8; //velocidad de animacion (msegundos)  
+        private final int velocidad = 8; //velocidad(msegundos)  
 
+        /**
+        * <h1>doInBackground</h1>
+        * <p>
+        * Metodo facilitador de movimiento</p>  
+        */
         @Override
         protected Void doInBackground() throws Exception {
             //BrickSort
@@ -133,10 +123,18 @@ public class Panel extends JPanel{
                 }
                 cont++;
             }
-            JOptionPane.showMessageDialog(null, "El ordenamiento a finalizado correctamente.");
+            JOptionPane.showMessageDialog(null, "El ordenamiento a finalizado.");
             AnimVentana.terminarProceso = false;
             return null;
         }
+        
+    /**
+     * <h1>girar</h1>
+     * <p>
+     * Compara y mueve en la animacion, las casillas dadas</p> 
+     * @param a casilla a comparar
+     * @param b casilla a comparar
+     */
         private void girar(int a , int b){
             //movmiento vertical
             for(int i=0; i< bNumber[0].HEIGHT;i++){

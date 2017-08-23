@@ -39,25 +39,25 @@ public class FileUtilitiesTest {
     }
 
     /**
-     * Test of AgregarAHistorial method, of class FileUtilities.
+     * Test of AgregarAHistorial method, of class UtilidadesDeArchivo.
      */
     @Test
     public void testAgregarAHistorial() {
         System.out.println("AgregarAHistorial");
         String mensaje = "";
-        FileUtilities instance = new FileUtilities();
+        UtilidadesDeArchivo instance = new UtilidadesDeArchivo();
         instance.AgregarAHistorial(mensaje);
         
         
     }
 
     /**
-     * Test of ObtenerHistorial method, of class FileUtilities.
+     * Test of ObtenerHistorial method, of class UtilidadesDeArchivo.
      */
     @Test
     public void testObtenerHistorial() {
         System.out.println("ObtenerHistorial");
-        FileUtilities instance = new FileUtilities();
+        UtilidadesDeArchivo instance = new UtilidadesDeArchivo();
         ArrayList<InformacionAlgoritmo> expResult = null;
         ArrayList<InformacionAlgoritmo> result = instance.ObtenerHistorial();
         assertEquals(expResult, result);
@@ -66,12 +66,12 @@ public class FileUtilitiesTest {
     }
 
     /**
-     * Test of LimpiarHistorial method, of class FileUtilities.
+     * Test of LimpiarHistorial method, of class UtilidadesDeArchivo.
      */
     @Test
     public void testLimpiarHistorial() {
         System.out.println("LimpiarHistorial");
-        FileUtilities instance = new FileUtilities();
+        UtilidadesDeArchivo instance = new UtilidadesDeArchivo();
         instance.LimpiarHistorial();
         
         

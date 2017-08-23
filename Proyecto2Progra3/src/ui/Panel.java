@@ -22,7 +22,7 @@ import ui.AnimVentana;
  */
 public class Panel extends JPanel{
 
-    private int NUM_BOX = 9;
+    private int NUM_BOX = 12;
     private Dimension dimension = new Dimension(320,128);    
     private int max = 99;
     private int min = 1;
@@ -79,6 +79,12 @@ public class Panel extends JPanel{
             new BrickWorker().execute();    
         }
     }
+    public void ordenarMerge() {
+        if (bNumber != null) {
+            AnimVentana.terminarProceso = true;
+            new MergeWorker().execute();//inicia worker
+        }
+    }
 
      /**
      * <h1>BrickWorker</h1>
@@ -87,7 +93,7 @@ public class Panel extends JPanel{
      */
     public class BrickWorker extends SwingWorker<Void, Void> {
 
-        private final int velocidad = 8; //velocidad de animacion (msegundos)  
+        private final int velocidad = 1; //velocidad de animacion (msegundos)  
 
         @Override
         protected Void doInBackground() throws Exception {
@@ -159,6 +165,162 @@ public class Panel extends JPanel{
                  } catch (InterruptedException e) {}
                 repaint();
             }
+        } 
+    }
+    //-----------------------------------------------------
+   public class MergeWorker extends SwingWorker<Void, Void> { //Solo separa la lista (ACTUALMENTE)
+
+        private final int velocidad = 150; //velocidad de animacion (milisegundos)  
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            animar();
+            AnimVentana.terminarProceso = false;
+            return null;
+        }
+        
+        private int[] ArrayTemp;
+        /**
+         * <h1>Animar</h1>
+         * <p>
+         * Reproduce la animacion del Mergesort</p>
+         */
+        private void animar() {
+          InicializarArrayTemporal();
+          MergeSort(ArrayTemp);
+          JOptionPane.showMessageDialog(null, "Se ha terminado la animacion de ordenadamiento.");
+        }
+
+        
+        public void InicializarArrayTemporal(){
+            ArrayTemp = new int[bNumber.length];
+            for (int i = 0; i < bNumber.length; i++) {
+                ArrayTemp[i] = bNumber[i].getValue();
+            }
+        }
+        
+    
+        public void MergeSort(int[] values) {
+                     
+            int k = 1;
+            int y = 0;
+            int yStarting = 1;
+            int amountToAdd = 2;
+            do{
+                k = yStarting;
+                for (int j = 0; k<values.length; j = j+amountToAdd) {
+                    Merge(j,k);
+                    k = k+amountToAdd;
+                }
+                yStarting = yStarting+amountToAdd;                 
+                amountToAdd = amountToAdd*2;
+            }while(yStarting<values.length);
+            Merge(y,values.length-1);
+                
+            
+//                if((int)(values.length/2 + (values.length % 2)) % 2 == 1)
+//                    Merge(values.length-amountToAdd,values.length-1);   
+//            
+//            int k = 1;
+//            for (int j = 0; j < values.length && k<values.length; j = j+2) {
+//                Merge(j,k);
+//                k = k+2;
+//            }
+//            k = 3;
+//            for (int j = 0; j < values.length && k<values.length; j = j+4) {
+//                Merge(j,k);
+//                k = k+4;
+//            }
+//            k=7;
+//            for (int j = 0; j < values.length && k<values.length; j = j+8) {
+//                Merge(j,k);
+//                k = k+8;
+//            }
+//            int i = 2;
+//            while(i<values.length/2){
+//                k = i;
+//                for (int j = 0; j < values.length; j = j+i) {
+//                    Merge(j,k);
+//                    k = k+i;
+//                }
+//                i= i*2;
+//            }
+        }
+        
+        
+        
+        public void Merge(int inicio, int fin) {
+            for (int i = inicio; i < fin; i++)  
+            {  
+                int index = i;
+                for (int j = i + 1; j <= fin; j++){  
+                    if (ArrayTemp[j] < ArrayTemp[index]){  
+                        index = j;//searching for lowest index  
+                    }
+                }
+                if(ArrayTemp[index] < ArrayTemp[i]){
+                    int distancia = index - i;
+                    moverArriba(i);
+                    moverAbajo(index);
+                    for(int x = 0; x < distancia; x++){
+                        moverDerecha(i);
+                        moverIzquierda(index);
+                    }
+                    moverArriba(index);
+                    moverAbajo(i);
+                    int smallerNumber = ArrayTemp[index];   
+                    ArrayTemp[index] = ArrayTemp[i];  
+                    ArrayTemp[i] = smallerNumber;
+                    BoxNumber temp = bNumber[index];   
+                    bNumber[index] = bNumber[i];  
+                    bNumber[i] = temp;
+                }
+            }  
+        }
+        
+        private void moverAbajo(int numCaja) { 
+            for (int i = 0; i < bNumber[numCaja].HEIGHT; i++) {
+                bNumber[numCaja].y += 1;
+            }
+            try {
+                Thread.sleep(velocidad);
+            } catch (InterruptedException e) {
+            }
+            repaint();
+        }
+        
+         private void moverArriba(int numCaja) {
+             for (int i = 0; i < bNumber[numCaja].HEIGHT; i++) {
+                bNumber[numCaja].y -= 1;
+            } 
+            try {
+                Thread.sleep(velocidad);
+            } catch (InterruptedException e) {
+            }
+            repaint();
+        }
+         
+        private void moverDerecha(int numCaja) {
+            for (int i = 0; i < bNumber[numCaja].WIDTH; i++) {
+                bNumber[numCaja].x += 1;
+            }
+            try {
+                Thread.sleep(velocidad);
+            } catch (InterruptedException e) {
+            }
+            repaint();
+        }
+
+
+        private void moverIzquierda(int numCaja) {
+           for (int i = 0; i < bNumber[numCaja].WIDTH; i++) {
+                bNumber[numCaja].x -= 1;
+            }
+            try {
+                Thread.sleep(velocidad);
+            } catch (InterruptedException e) {
+            }
+            repaint();
         }
     }
 }

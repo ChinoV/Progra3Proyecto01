@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  *
  * @author Alfredo Valverde
  */
-public class ColaTest {
+public class ColaTest<T> {
     
     public ColaTest() {
     }
@@ -79,7 +79,8 @@ public class ColaTest {
     public void testDequeue() {
         System.out.println("Dequeue");
         Cola instance = new Cola();
-        Object expResult = null;
+        //T Aux = (T) instance.getCabeza().getObjeto();
+        Object expResult = new Persona("3-1437-0004", 20, "a", "b", "c");
         Object result = instance.Dequeue();
         assertEquals(expResult, result);
     }
@@ -106,8 +107,6 @@ public class ColaTest {
         boolean expResult = false;
         boolean result = instance.IsEmpty();
         assertEquals(expResult, result);
-        
-        
     }
 
     /**

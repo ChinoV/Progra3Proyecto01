@@ -34,6 +34,7 @@ public class AnimVentana extends javax.swing.JFrame {
         BrickSortBtn = new javax.swing.JButton();
         VolverBtn = new javax.swing.JButton();
         AnimPanel = new ui.Panel();
+        MergeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,44 +63,52 @@ public class AnimVentana extends javax.swing.JFrame {
         AnimPanel.setLayout(AnimPanelLayout);
         AnimPanelLayout.setHorizontalGroup(
             AnimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
+            .addGap(0, 1135, Short.MAX_VALUE)
         );
         AnimPanelLayout.setVerticalGroup(
             AnimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGap(0, 599, Short.MAX_VALUE)
         );
+
+        MergeBtn.setText("MergeSort");
+        MergeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MergeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BrickSortBtn)
-                            .addComponent(GenerarBtn))
-                        .addGap(18, 18, 18)
-                        .addComponent(AnimPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(VolverBtn)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(GenerarBtn)
+                    .addComponent(MergeBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BrickSortBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(AnimPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VolverBtn)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
                         .addComponent(GenerarBtn)
-                        .addGap(31, 31, 31)
-                        .addComponent(BrickSortBtn))
-                    .addComponent(AnimPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(VolverBtn)
+                        .addGap(81, 81, 81)
+                        .addComponent(BrickSortBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(MergeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(VolverBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AnimPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -121,6 +130,12 @@ public class AnimVentana extends javax.swing.JFrame {
     private void VolverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverBtnActionPerformed
         this.dispose();
     }//GEN-LAST:event_VolverBtnActionPerformed
+
+    private void MergeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MergeBtnActionPerformed
+        if (!terminarProceso) {
+            this.AnimPanel.ordenarMerge();
+        }
+    }//GEN-LAST:event_MergeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +177,7 @@ public class AnimVentana extends javax.swing.JFrame {
     private ui.Panel AnimPanel;
     private javax.swing.JButton BrickSortBtn;
     private javax.swing.JButton GenerarBtn;
+    private javax.swing.JButton MergeBtn;
     private javax.swing.JButton VolverBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -184,7 +184,12 @@ public class ListaCircular<T>
         }
     }
     
-    
+    /** <h1>LigarPorPosicion</h1>
+     * <p> Liga un nodo en una posicion dada
+     * </p>
+     *@param nuevo Nodo a ligar
+     *@param _posicion posicion en la que se ligara el nodo 
+     */ 
     private void LigarPorPosicion(NodoD nuevo, int _posicion)
     {
         NodoD Aux = this.getCabeza();
@@ -248,7 +253,14 @@ public class ListaCircular<T>
             }while(Aux.getSiguiente() != this.getCabeza());
         return null;
     }
-
+    /**
+     * <h1>CompararPersonas</h1>
+     * <p> Prioritiza Personas segun su cedula
+     * </p>
+     *@param p1 primera persona a comparar
+     *@param p2 segunda persona a comparar
+     *@return boolean 
+     */
     private boolean CompararPersonas(Persona p1, Persona p2) {
         if (p1.getCedula().charAt(0) == 'E' || p2.getCedula().charAt(0) == 'E')
         {
@@ -290,6 +302,14 @@ public class ListaCircular<T>
         return false;
     }
     
+    
+    /**
+     * <h1>ObtenerPersonaPorPosicion</h1>
+     * <p> Devuelve una Persona en una posicion dada
+     * </p>
+     *@param posicion posicion en la lista
+     *@return Persona 
+     */
     private Persona ObtenerPersonaPorPosicion(int posicion)
     {
         if (!this.IsEmpty())
@@ -347,5 +367,5 @@ public class ListaCircular<T>
             Temp.getSiguiente().setAnterior(Temp);
             
         }
-        }
+    }
 }

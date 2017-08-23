@@ -29,12 +29,12 @@ public class Ventana extends javax.swing.JFrame {
      */
     
     int counter;
-    FileUtilities fl;
+    UtilidadesDeArchivo fl;
     
     
     public Ventana() {
         initComponents();
-        fl = new FileUtilities();
+        fl = new UtilidadesDeArchivo();
         InicializarTabla();
     }
 

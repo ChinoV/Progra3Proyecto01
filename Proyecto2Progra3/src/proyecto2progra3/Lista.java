@@ -5,7 +5,7 @@ package proyecto2progra3;
  */
 public class Lista<T>
 {
-    private Nodo<T> cabeza;
+    public Nodo<T> cabeza;
 
     public Nodo<T> getCabeza() {
         return cabeza;
@@ -33,7 +33,7 @@ public class Lista<T>
      * Agrega un nodo previamente creado a la lista</p>
      * @param Temp nodo a insertar.
      */
-    private void AgregaNodo(Nodo<T> Temp) {
+    public void AgregaNodo(Nodo<T> Temp) {
         Temp.setSiguiente(null);
         Nodo Aux = this.getCabeza();
         if (Aux == null) {
@@ -151,7 +151,7 @@ public class Lista<T>
      *@param derecha limite derecho
      * 
      */
-    private void Merge(Lista _lista, int izquierda, int mitad, int derecha)
+    public void Merge(Lista _lista, int izquierda, int mitad, int derecha)
     {
         int i, j, k;
         int num1 = mitad - izquierda + 1;
@@ -206,7 +206,7 @@ public class Lista<T>
      *@param posicion posicion en la lista
      *@return Persona 
      */
-    private Persona ObtenerPersonaPorPosicion(int posicion)
+    public Persona ObtenerPersonaPorPosicion(int posicion)
     {
         if (!this.IsEmpty())
         {
@@ -232,7 +232,7 @@ public class Lista<T>
      *@param nuevo Nodo a ligar
      *@param _posicion posicion en la que se ligara el nodo 
      */
-    private void LigarPorPosicion(Nodo nuevo, int _posicion)
+    public void LigarPorPosicion(Nodo nuevo, int _posicion)
     {
         Nodo Aux = this.getCabeza();
         if (_posicion == 0)
@@ -263,7 +263,7 @@ public class Lista<T>
      *@param _posicion posicion en la que se ligara el nodo
      *@return Nodo 
      */
-    private Nodo DesligarPorPosicion(int _posicion)
+    public Nodo DesligarPorPosicion(int _posicion)
     {
         Nodo Aux = this.getCabeza();
         if (_posicion == 0)
@@ -286,7 +286,7 @@ public class Lista<T>
         return null;
     }
 
-      /**
+     /**
      * <h1>CompararPersonas</h1>
      * <p> Prioritiza Personas segun su cedula
      * </p>
@@ -294,7 +294,7 @@ public class Lista<T>
      *@param p2 segunda persona a comparar
      *@return boolean 
      */
-    private boolean CompararPersonas(Persona p1, Persona p2) {
+    public boolean CompararPersonas(Persona p1, Persona p2) {
         if (p1.getCedula().charAt(0) == 'E' || p2.getCedula().charAt(0) == 'E')
         {
             if (p1.getCedula().charAt(0) == 'E' && p2.getCedula().charAt(0) == 'E')
