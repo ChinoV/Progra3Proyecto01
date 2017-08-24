@@ -29,29 +29,29 @@ public class Ventana extends javax.swing.JFrame {
      */
     
     int counter;
-    UtilidadesDeArchivo fl;
+    //UtilidadesDeArchivo fl;
     
     
     public Ventana() {
         initComponents();
-        fl = new UtilidadesDeArchivo();
+        //fl = new UtilidadesDeArchivo();
         InicializarTabla();
     }
 
     
     public void InicializarTabla(){
-        ArrayList<InformacionAlgoritmo> TempArray = fl.ObtenerHistorial();
-        for (int i = 0; i < TempArray.size(); i++) {
-             Object[] TempRow= { TempArray.get(i).getId(), TempArray.get(i).getNombre(), TempArray.get(i).getTipo(), TempArray.get(i).getFecha(), TempArray.get(i).getDuracion()};
-            ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
-        }
-        if(TempArray.size() > 0){
-            counter = Integer.parseInt(TempArray.get(TempArray.size()-1).getId()) + 1;
-            MejorAlgoritmo();
-        }else{
-            jTextField1.setText("");
-            counter = 1;
-        }  
+        //ArrayList<InformacionAlgoritmo> TempArray = fl.ObtenerHistorial();
+//        for (int i = 0; i < TempArray.size(); i++) {
+//             Object[] TempRow= { TempArray.get(i).getId(), TempArray.get(i).getNombre(), TempArray.get(i).getTipo(), TempArray.get(i).getFecha(), TempArray.get(i).getDuracion()};
+//            ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
+//        }
+//        if(TempArray.size() > 0){
+//            counter = Integer.parseInt(TempArray.get(TempArray.size()-1).getId()) + 1;
+//            MejorAlgoritmo();
+//        }else{
+//            jTextField1.setText("");
+//            counter = 1;
+//        }  
     }
     
     public void MejorAlgoritmo(){
@@ -253,7 +253,7 @@ public class Ventana extends javax.swing.JFrame {
         Object[] TempRow= { counter, "MergeSort Simple", "Lista Simple", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
-        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        //fl.AgregarAHistorial(Arrays.toString(TempRow));
         MejorAlgoritmo();
     }//GEN-LAST:event_MergeSortBtnActionPerformed
 
@@ -278,7 +278,7 @@ public class Ventana extends javax.swing.JFrame {
         Object[] TempRow= { counter, "BrickSort", "Lista Simple", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
-        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        //fl.AgregarAHistorial(Arrays.toString(TempRow));
         MejorAlgoritmo();
     }//GEN-LAST:event_BrickSortBtnActionPerformed
 
@@ -303,7 +303,7 @@ public class Ventana extends javax.swing.JFrame {
         Object[] TempRow= { counter, "InsertionSort", "Cola", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
-        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        //fl.AgregarAHistorial(Arrays.toString(TempRow));
         MejorAlgoritmo();
     }//GEN-LAST:event_InsertionSortBtnActionPerformed
 
@@ -315,7 +315,7 @@ public class Ventana extends javax.swing.JFrame {
         while(((DefaultTableModel)jTable1.getModel()).getRowCount()>0){
             ((DefaultTableModel)jTable1.getModel()).removeRow(0);
         }
-        fl.LimpiarHistorial();
+        //fl.LimpiarHistorial();
         counter = 1;
         jTextField1.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -345,7 +345,7 @@ public class Ventana extends javax.swing.JFrame {
         Object[] TempRow= { counter, "HeapSort", "Pila", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
-        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        //fl.AgregarAHistorial(Arrays.toString(TempRow));
         MejorAlgoritmo();
     }//GEN-LAST:event_HeapSortBtnActionPerformed
 
@@ -375,7 +375,7 @@ public class Ventana extends javax.swing.JFrame {
         Object[] TempRow= { counter, "MergeSort Circular", "Lista Circular", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()), estimatedTime};
         ((DefaultTableModel)jTable1.getModel()).addRow(TempRow);
         counter++;
-        fl.AgregarAHistorial(Arrays.toString(TempRow));
+        //fl.AgregarAHistorial(Arrays.toString(TempRow));
         MejorAlgoritmo();
     }//GEN-LAST:event_jButton1ActionPerformed
 

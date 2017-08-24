@@ -83,11 +83,9 @@ public class ListaTest {
     public void testIsEmpty() {
         System.out.println("IsEmpty");
         Lista instance = new Lista();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.IsEmpty();
         assertEquals(expResult, result);
-        
-        
     }
 
     /**
@@ -148,13 +146,11 @@ public class ListaTest {
     @Test
     public void testEsCedula() {
         System.out.println("esCedula");
-        String Documento = "";
+        String Documento = "1-1234-1234";
         Lista instance = new Lista();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.esCedula(Documento);
         assertEquals(expResult, result);
-        
-        
     }
 
     /**
@@ -175,11 +171,14 @@ public class ListaTest {
     @Test
     public void testBrickSort() {
         System.out.println("brickSort");
-        Lista p = null;
         Lista instance = new Lista();
-        instance.brickSort(p);
-        
-        
+        instance.Add(new Persona("3-1437-0004", 20, "a", "b", "c"));
+        instance.Add(new Persona("E52461", 20, "a", "b", "c"));
+        Lista ordenar = new Lista();
+        ordenar.Add(new Persona("E52461", 20, "a", "b", "c"));
+        ordenar.Add(new Persona("3-1437-0004", 20, "a", "b", "c"));
+        ordenar.brickSort(ordenar);
+        assertEquals(((Persona)instance.getCabeza().getObjeto()).getCedula(), ((Persona)ordenar.getCabeza().getObjeto()).getCedula());
     }
     
 }

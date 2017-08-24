@@ -93,7 +93,7 @@ public class Panel extends JPanel{
      */
     public class BrickWorker extends SwingWorker<Void, Void> {
 
-        private final int velocidad = 6; //velocidad de animacion (msegundos)    
+        private final int velocidad = 7; //velocidad de animacion (msegundos)    
         @Override
         protected Void doInBackground() throws Exception {
             //BrickSort
@@ -170,7 +170,7 @@ public class Panel extends JPanel{
     //-----------------------------------------------------
    public class MergeWorker extends SwingWorker<Void, Void> { //Solo separa la lista (ACTUALMENTE)
 
-        private final int velocidad = 100; //velocidad de animacion (milisegundos)  
+        private final int velocidad = 135; //velocidad de animacion (milisegundos)  
 
         @Override
         protected Void doInBackground() throws Exception {

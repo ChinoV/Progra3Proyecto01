@@ -150,8 +150,8 @@ public class ColaTest<T> {
      * Test of getString method, of class Cola.
      */
     @Test
-    public void generalTest() {
-        System.out.println("General Test");
+    public void testBrickSort() {
+        System.out.println("testBrickSort");
         
         Lista<Persona> toFixPersonas = new Lista<Persona>(); 
         toFixPersonas.Add(new Persona("3-1437-0004", 20, "a", "b", "c"));

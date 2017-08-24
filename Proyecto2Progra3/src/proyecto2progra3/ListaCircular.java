@@ -58,6 +58,9 @@ public class ListaCircular<T>
     public int Size()
     {
         NodoD Aux = this.getCabeza();
+        if(Aux==null){
+            return 0;
+        }
         int contador = 0;
         do{
             contador++;
@@ -75,6 +78,9 @@ public class ListaCircular<T>
     public String getString() { 
         String mensaje="";
         NodoD Aux = this.getCabeza();
+        if(Aux==null){
+            return mensaje;
+        }
         do{
             mensaje+=((Persona)Aux.getObjeto()).getCedula() + "  ";
             Aux = Aux.getSiguiente();
