@@ -76,7 +76,7 @@ public class Panel extends JPanel{
     public void Brick() {
         if (bNumber != null) {
             AnimVentana.terminarProceso = true;
-            new BrickWorker().execute();    
+            new BrickWorker().execute();
         }
     }
     public void ordenarMerge() {
@@ -93,8 +93,7 @@ public class Panel extends JPanel{
      */
     public class BrickWorker extends SwingWorker<Void, Void> {
 
-        private final int velocidad = 1; //velocidad de animacion (msegundos)  
-
+        private final int velocidad = 6; //velocidad de animacion (msegundos)    
         @Override
         protected Void doInBackground() throws Exception {
             //BrickSort
@@ -124,7 +123,8 @@ public class Panel extends JPanel{
                 cont++;
             }
              
-            AnimVentana.terminarProceso = false;
+            AnimVentana.terminarProceso = false;    
+            JOptionPane.showMessageDialog(null, "Se ha terminado la animacion BrickSort.");
             return null;
         }
         
@@ -170,7 +170,7 @@ public class Panel extends JPanel{
     //-----------------------------------------------------
    public class MergeWorker extends SwingWorker<Void, Void> { //Solo separa la lista (ACTUALMENTE)
 
-        private final int velocidad = 150; //velocidad de animacion (milisegundos)  
+        private final int velocidad = 100; //velocidad de animacion (milisegundos)  
 
         @Override
         protected Void doInBackground() throws Exception {
@@ -188,10 +188,14 @@ public class Panel extends JPanel{
         private void animar() {
           InicializarArrayTemporal();
           MergeSort(ArrayTemp);
-          JOptionPane.showMessageDialog(null, "Se ha terminado la animacion de ordenadamiento.");
+          JOptionPane.showMessageDialog(null, "Se ha terminado la animacion MergeSort.");
         }
 
-        
+        /**
+         * <h1>InicializarArrayTemporal</h1>
+         * <p>
+         * Inicializa un Array de tipo int de uso temporal</p>
+         */
         public void InicializarArrayTemporal(){
             ArrayTemp = new int[bNumber.length];
             for (int i = 0; i < bNumber.length; i++) {
@@ -199,7 +203,12 @@ public class Panel extends JPanel{
             }
         }
         
-    
+        /**
+         * <h1>MergeSort</h1>
+         * <p>
+         * Ordena en base al algoritmo MergeSort</p>
+         * @param Array de tipo int
+         */
         public void MergeSort(int[] values) {
                      
             int k = 1;
@@ -216,39 +225,15 @@ public class Panel extends JPanel{
                 amountToAdd = amountToAdd*2;
             }while(yStarting<values.length);
             Merge(y,values.length-1);
-                
-            
-//                if((int)(values.length/2 + (values.length % 2)) % 2 == 1)
-//                    Merge(values.length-amountToAdd,values.length-1);   
-//            
-//            int k = 1;
-//            for (int j = 0; j < values.length && k<values.length; j = j+2) {
-//                Merge(j,k);
-//                k = k+2;
-//            }
-//            k = 3;
-//            for (int j = 0; j < values.length && k<values.length; j = j+4) {
-//                Merge(j,k);
-//                k = k+4;
-//            }
-//            k=7;
-//            for (int j = 0; j < values.length && k<values.length; j = j+8) {
-//                Merge(j,k);
-//                k = k+8;
-//            }
-//            int i = 2;
-//            while(i<values.length/2){
-//                k = i;
-//                for (int j = 0; j < values.length; j = j+i) {
-//                    Merge(j,k);
-//                    k = k+i;
-//                }
-//                i= i*2;
-//            }
-        }
+        }        
         
-        
-        
+        /**
+         * <h1>Merge</h1>
+         * <p>
+         * Facilita el ordenamiento de la animacion en base al algoritmo MergeSort</p>
+         * @param inicio int
+         * @param fin int
+         */
         public void Merge(int inicio, int fin) {
             for (int i = inicio; i < fin; i++)  
             {  
@@ -277,7 +262,12 @@ public class Panel extends JPanel{
                 }
             }  
         }
-        
+        /**
+         * <h1>moverAbajo</h1>
+         * <p>
+         * Moviliza la casilla indicada hacia abajo, usando las cordenadas verticales en "y"</p>
+         * @param numCaja int 
+         */
         private void moverAbajo(int numCaja) { 
             for (int i = 0; i < bNumber[numCaja].HEIGHT; i++) {
                 bNumber[numCaja].y += 1;
@@ -289,17 +279,29 @@ public class Panel extends JPanel{
             repaint();
         }
         
-         private void moverArriba(int numCaja) {
-             for (int i = 0; i < bNumber[numCaja].HEIGHT; i++) {
-                bNumber[numCaja].y -= 1;
-            } 
-            try {
-                Thread.sleep(velocidad);
-            } catch (InterruptedException e) {
-            }
-            repaint();
+        /**
+         * <h1>moverArriba</h1>
+         * <p>
+         * Moviliza la casilla indicada hacia arriba, usando las cordenadas verticales en "y"</p>
+         * @param numCaja int 
+         */
+        private void moverArriba(int numCaja) {
+            for (int i = 0; i < bNumber[numCaja].HEIGHT; i++) {
+               bNumber[numCaja].y -= 1;
+           } 
+           try {
+               Thread.sleep(velocidad);
+           } catch (InterruptedException e) {
+           }
+           repaint();
         }
-         
+
+        /**
+         * <h1>moverDerecha</h1>
+         * <p>
+         * Moviliza la casilla indicada hacia la derecha, usando las cordenadas horizontales en "x"</p>
+         * @param numCaja int 
+         */
         private void moverDerecha(int numCaja) {
             for (int i = 0; i < bNumber[numCaja].WIDTH; i++) {
                 bNumber[numCaja].x += 1;
@@ -311,7 +313,12 @@ public class Panel extends JPanel{
             repaint();
         }
 
-
+        /**
+         * <h1>moverIzquierda</h1>
+         * <p>
+         * Moviliza la casilla indicada hacia la izquierda, usando las cordenadas horizontales en "x"</p>
+         * @param numCaja int 
+         */
         private void moverIzquierda(int numCaja) {
            for (int i = 0; i < bNumber[numCaja].WIDTH; i++) {
                 bNumber[numCaja].x -= 1;

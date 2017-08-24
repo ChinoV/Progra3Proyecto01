@@ -36,11 +36,21 @@ public class BoxNumber {
         new Color(0, 186, 255)
     };
 
+    /**
+     * <h1>BoxNumber</h1>
+     * <p>
+     * Genera casilla numerada para la animacion</p>
+     */
     public BoxNumber() {
         Random rn = new Random();
         colorBg = color[rn.nextInt(color.length)];
     }
-
+    /**
+    * <h1>draw</h1>
+    * <p>
+    * Dibuja las casilllas en las coordenadas necesarias usando "x" y "y"</p>
+    * @param Graphics2D
+    */
     public void draw(Graphics2D g2) {
 
         Polygon boxPolygon = new Polygon();
@@ -78,12 +88,13 @@ public class BoxNumber {
         this.number = Integer.toString(number);
     }
 
-    /**
-     * Obtiene las dimensiones del texto requerido
-     *
-     * @param String texto a calcular
-     * @return Dimension
-     */
+    /** 
+    * <h1>calculateFontDimension</h1>
+    * <p>
+    * Obtiene las dimensiones del texto requerido</p>
+    * @param String texto a calcular
+    * @return Dimension
+    */
     private Dimension calculateFontDimension(String text) {
         BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = image.createGraphics();
