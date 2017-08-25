@@ -12,13 +12,13 @@ import java.sql.Date;
  */
 public class InformacionAlgoritmo {
     
-    private String id;
+    private int id;
     private String nombre;
     private String tipo;
-    private String fecha;
-    private String duracion;
+    private Date fecha;
+    private long duracion;
 
-    public InformacionAlgoritmo(String id, String nombre, String tipo, String fecha, String duracion) {
+    public InformacionAlgoritmo(int id, String nombre, String tipo, Date fecha, long duracion) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -26,11 +26,11 @@ public class InformacionAlgoritmo {
         this.duracion = duracion;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,19 +50,19 @@ public class InformacionAlgoritmo {
         this.tipo = tipo;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public String getDuracion() {
+    public long getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(String duracion) {
+    public void setDuracion(long duracion) {
         this.duracion = duracion;
     }
 

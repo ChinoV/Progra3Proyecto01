@@ -1,0 +1,19 @@
+Pasos para correr el programa:
+Crear la base de datos:
+1.	Extraer el archivo.rar
+2.	Abrir MySQL Workbench
+3.	Conectar a la base de datos
+4.	En ‘Management’ seleccionar la opción Data Import/Restore
+5.	Seleccionar la opción ‘Import from self-contained file’
+6.	Buscar el archivo .sql que se encuentra en la carpeta descomprimida (paso 1).
+7.	Presionar el botón ‘Start Import’
+
+Correr el programa:
+1.	Abrir NetBeans IDE
+2.	Abrir  el proyecto que se encuentra en la carpeta descomprimida (crear base de datos paso 1)
+3.	Dirigirse al archivo DataControl.java, en la línea 28 cambiar el usuario y contraseña del MySQL al correspondiente (varía dependiendo de la configuración de las maquinas)
+4.	Correr el sistema
+
+
+GitHub Link:
+https://github.com/ChinoV/Progra3Proyecto02.git
